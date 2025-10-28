@@ -21,13 +21,13 @@ export default class Server{
         this.app.use(morgan('dev'));
         //Se configura el archivo estatico
         const __dirname = dirname(fileURLToPath(import.meta.url));
-        this.app.use(express.static(__dirname + '/public'));
+        this.app.use(express.static(__dirname + '/../../public'));
         console.log(__dirname);
-        console.log(__dirname + '/public');
+        console.log(__dirname + '/../../public');
     }
 
     listen(){
-        this.app.listen( this.port, ()=> console.info(`El servidor se esta ejecutando en el puerto ${this.port}}`))
+        this.app.listen( this.port, ()=> console.info(`El servidor se esta ejecutando en: http://localhost:${this.port}}`))
     }
 
 
