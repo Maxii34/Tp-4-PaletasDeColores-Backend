@@ -1,10 +1,11 @@
 import { Router } from "express";
-import { agregarColors } from "../controllers/producto,controller";
+import { crearColors } from "../controllers/productos.controllers.js";
 
 /*Get, Post, Path, Put, Delete*/
 //Router() se guarda en router.
 const router = Router();
 
-router.route('/').get(agregarColors)
+router.route('/').post(crearColors)
+
 
 export default router
