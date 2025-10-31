@@ -13,7 +13,6 @@ export default class Server {
     this.app = express(); //Se guarda express en "app".
     this.port = process.env.PORT || 3001;
     this.middlewares();
-    //this.routes();
   }
 
   middlewares() {
@@ -35,5 +34,4 @@ export default class Server {
     );
   }
 
-  //routes(){}
 }
