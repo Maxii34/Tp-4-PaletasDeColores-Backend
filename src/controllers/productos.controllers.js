@@ -56,3 +56,19 @@ export const borrarColorID = async (req, res) => {
     res.status(500).json({ mensaje: "Ocurrio un error al borrar el color." });
   }
 };
+
+//Editar color por id.
+export const editarColorID = async (req, res) => {
+    try {
+        console.log(req.params.id);
+        const colorActualizado = await color.findByIdAndUpdate(
+            req.params.id, req.body, { new: true });
+            if (!colorActualizado) {
+                return res.status(404).json({ mensaje: "El color no fue encontrado." });
+            }
+            res.status(200).json({ mensaje: "El color fue editado exitosamente." });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ mensaje: "Ocurrio un error al editar el color." });
+    }
+}
