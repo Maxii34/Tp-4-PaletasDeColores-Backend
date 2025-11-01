@@ -32,13 +32,27 @@ export const obtenerColorID = async (req, res) => {
     console.log(req.params.id);
     const colorID = await color.findById(req.params.id);
     if (!colorID) {
-      res.status(404).json({ mensaje: "El color no fue encontrado." });
+      return res.status(404).json({ mensaje: "El color no fue encontrado." });
     }
     res.status(200).json(colorID);
   } catch (error) {
     console.error(error);
-    res
-      .status(500)
-      .json({ mensaje: "Ocurrio un error al obtener el color por ID." });
+    res.status(500).json({ mensaje: "Ocurrio un error al obtener el color." });
+  }
+};
+
+//Borrar color por id.
+export const borrarColorID = async (req, res) => {
+  try {
+    console.log(req.params.id);
+    const colorBorrarID = await color.findById(req.params.id);
+    if (!colorBorrarID) {
+      return res.status(404).json({ mensaje: "El color no fue encontrado." });
+    }
+    await colorBorrarID.deleteOne();
+    res.status(200).json({ mensaje: "El color fue borrado exitosamente." });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ mensaje: "Ocurrio un error al borrar el color." });
   }
 };
