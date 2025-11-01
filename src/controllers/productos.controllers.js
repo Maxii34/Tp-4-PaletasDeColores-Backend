@@ -12,3 +12,14 @@ export const crearColors = async (req, res) => {
         res.status(500).json({ mensaje: 'Ocurrio un error al crear el color.'})
     }
 }
+
+//Listar colores
+export const listarColores = async (req, res)=>{
+try {
+    const colores =await color.find()
+    res.status(200).json(colores)
+} catch (error) {
+    console.error(error)
+    res.status(500).json({ mensaje: 'Ocurrio un error al listar los colores.'})
+}
+}

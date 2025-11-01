@@ -10,10 +10,9 @@ const colorSchema = new Schema({
     },
     hexadecimal: {
         type: String,
-        required: true,
         minLength: 7,
         maxLength: 7,
-        match: /^#[0-9A-Fa-f]{6}$/
+        match: /^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$/
     },
 });
 
